@@ -38,3 +38,4 @@ Scenario: log in
     And I check "Remember me"
     And I press "Log in"
     Then I should see "Hello test@test.com"
+

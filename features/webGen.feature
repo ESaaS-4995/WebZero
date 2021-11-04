@@ -19,6 +19,6 @@ Scenario: see previous website
     And I should see "Website address"
     And I should see "Username"
 
-Scenario: upload 
+Scenario: upload a file
     Given some file is selected
-    And I press "Upload Resume"
+    Then I should see "generate your website"
