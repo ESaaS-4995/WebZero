@@ -11,10 +11,10 @@ module Functions::WebResume::DeployHelper
   end
 
   # not Tracy's s3 secrets
-  AWS_ACCESS_KEY_ID = '@JH@Q3DOFR4FVO1XYP3I'
-  AWS_SECRET_ACCESS_KEY = 'LNfF@wdLtO/ljrQTwPY5I4.kGqjpFabWkcP8Gke@'
-  REGION_ID = 'us-east-1'
-  BUCKET_NAME = 'webzero-test'
+  AWS_ACCESS_KEY_ID = ENV['AWS_ACCESS_KEY_ID']
+  AWS_SECRET_ACCESS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
+  REGION_ID = ENV['REGION_ID']
+  BUCKET_NAME = ENV['BUCKET_NAME']
 =begin
   # Lists the available Amazon S3 buckets.
   #
