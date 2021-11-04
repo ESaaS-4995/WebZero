@@ -16,22 +16,20 @@ module ApplicationHelper
     if path == nil
       return
     end
-    resume_str = Functions::WebResume::ResumeHelper::get_resume_js(path)
-    template_path = 'app/helpers/functions/web_resume/template_0'
-    resume_relative_path = 'js'
-    dest_path = 'app/helpers/functions/web_resume/output_local_' + unique_id
-    local_path = Functions::WebResume::BundleHelper::bundle_to_local(template_path, resume_str, resume_relative_path, dest_path)
-    ret = Functions::WebResume::DeployHelper::upload_to_s3(local_path, '', unique_id)
-    
-    # attributes =  { :user => {:website => result}}
-    # # attr[:user][:website]=result
-    # # current_user.resume
-    # @user_cur = current_user    
-    # if @user_cur.update(attributes)
-    #   # @user_cur.save
-    #   return true
-    # end
-    # redirect_to user_path 
+    if current_user.website.nil?
+
+      resume_str = Functions::WebResume::ResumeHelper::get_resume_js(path)
+      template_path = 'app/helpers/functions/web_resume/template_0'
+      resume_relative_path = 'js'
+      dest_path = 'app/helpers/functions/web_resume/output_local_' + unique_id
+      local_path = Functions::WebResume::BundleHelper::bundle_to_local(template_path, resume_str, resume_relative_path, dest_path)
+      ret = Functions::WebResume::DeployHelper::upload_to_s3(local_path, '', unique_id)
+      current_user.website = ret 
+      current_user.save
+    end
+    puts "============================================"
+    puts current_user.website
+    return current_user.website
 
     end
   end
