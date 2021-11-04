@@ -11,7 +11,7 @@ module Functions::WebResume::Deploy2S3
   # @param s3_client [Aws::S3::Client] An initialized Amazon S3 client.
   # @example
   #   list_buckets(Aws::S3::Client.new(region: 'us-east-1'))
-  def list_buckets(s3_client)
+  def self.list_buckets(s3_client)
     response = s3_client.list_buckets
     if response.buckets.count.zero?
       puts 'No buckets.'
@@ -34,7 +34,7 @@ module Functions::WebResume::Deploy2S3
   #     Aws::S3::Client.new(region: 'us-east-1'),
   #     'doc-example-bucket'
   #   )
-  def bucket_created?(s3_client, bucket_name)
+  def self.bucket_created?(s3_client, bucket_name)
     response = s3_client.create_bucket(bucket: bucket_name)
     if response.location == '/' + bucket_name
       return true
@@ -64,7 +64,7 @@ module Functions::WebResume::Deploy2S3
   #     'my-file.txt',
   #     'This is the content of my-file.txt.'
   #   )
-  def object_uploaded?(s3_client, bucket_name, object_key, object_content)
+  def self.object_uploaded?(s3_client, bucket_name, object_key, object_content)
     response = s3_client.put_object(
       bucket: bucket_name,
       key: object_key,
@@ -105,7 +105,7 @@ module Functions::WebResume::Deploy2S3
     return false
   end
 
-  def object_acl_set?(s3_client, bucket_name, object_key)
+  def self.object_acl_set?(s3_client, bucket_name, object_key)
     s3_client.put_object_acl(
       bucket: bucket_name,
       key: object_key,
@@ -118,7 +118,7 @@ module Functions::WebResume::Deploy2S3
   end
 
   # For default demo: call upload_to_s3('', '', '', '', '')
-  def upload_to_s3(access_key, access_secret, region_id, s3_client, bucket_name)
+  def self.upload_to_s3(access_key, access_secret, region_id, s3_client, bucket_name)
     credentials = if access_key == '' || access_secret == ''
       Aws::Credentials.new(
         AWS_ACCESS_KEY_ID,
@@ -154,7 +154,7 @@ module Functions::WebResume::Deploy2S3
     bucket_list = list_buckets(s3_client)
     puts bucket_list
 
-    Dir.glob('output_local/**/*').each do |filename|
+    Dir.glob('app/helpers/functions/web_resume/output_local/**/*').each do |filename|
       next if File.directory?(filename)
 
       puts filename
