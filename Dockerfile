@@ -5,7 +5,7 @@ RUN yum install which wget git -y \
     && curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash \
     && dnf install -y epel-release \
     && dnf install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel postgresql-libs postgresql-devel\
-    && curl -sL https://rpm.nodesource.com/setup_12.x | bash - \
+    # && curl -sL https://rpm.nodesource.com/setup_12.x | bash - \
     && dnf install -y nodejs \
     && curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo \
     && dnf install -y yarn \
