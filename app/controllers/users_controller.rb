@@ -33,6 +33,6 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:resume)
+    params.require(:user).permit(:resume,:website)
   end
 end
