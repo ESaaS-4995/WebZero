@@ -12,15 +12,17 @@
   </thead>
 
   <tbody>
-    <% @websites.each do |website| %>
+    <% User.all.each do |user| %>
+    <%# <% user.website do |website| %1> %>
       <tr>
-        <td><%= website.website_address %></td>
-        <td><%= website.username %></td>
+        <td><%= user.website %></td>
+        <td><%= user.email %></td>
         <%# <td><%= link_to 'Show', website %1></td> %>
         <%# <td><%= link_to 'Edit', edit_website_path(website) %1></td> %>
         <%# <td><%= link_to 'Destroy', website, method: :delete, data: { confirm: 'Are you sure?' } %1></td> %>
       </tr>
     <% end %>
+    <%# <% end %1> %>
   </tbody>
 </table>
 
