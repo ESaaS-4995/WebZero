@@ -1,9 +1,9 @@
 require 'aws-sdk'
 
-module Functions::WebResume::Deploy2S3
+module Functions::WebResume::DeployHelper
   # Tracy's s3 secrets
-  AWS_ACCESS_KEY_ID = 'AKIAYNNU7IGCGQDMBRUE'
-  AWS_SECRET_ACCESS_KEY = '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'
+  AWS_ACCESS_KEY_ID = 'AKIAYNNU7IGCE7AKU2GE'
+  AWS_SECRET_ACCESS_KEY = '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'
   REGION_ID = 'us-east-1'
   BUCKET_NAME = 'webzero-test'
   # Lists the available Amazon S3 buckets.
@@ -82,7 +82,7 @@ module Functions::WebResume::Deploy2S3
   end
 
   # Add bucket policy: PublicReadGetObject
-  def bucket_policy_added?(s3_client, bucket_name)
+  def self.bucket_policy_added?(s3_client, bucket_name)
     bucket_policy = {
       "Version": '2012-10-17',
       "Statement": [
@@ -147,9 +147,9 @@ module Functions::WebResume::Deploy2S3
 
     bucket_name = BUCKET_NAME if bucket_name == ''
 
-    bucket_create = bucket_created?(s3_client, bucket_name)
+    bucket_create = self.bucket_created?(s3_client, bucket_name)
     puts "bucket created: #{bucket_create}"
-    bucket_add_policy = bucket_policy_added?(s3_client, bucket_name)
+    bucket_add_policy = self.bucket_policy_added?(s3_client, bucket_name)
     puts "bucket policy added: #{bucket_add_policy}"
     bucket_list = list_buckets(s3_client)
     puts bucket_list
@@ -159,6 +159,7 @@ module Functions::WebResume::Deploy2S3
 
       puts filename
       # set acl to 'public-read'
+      puts AWS_ACCESS_KEY_ID
       s3_client.put_object(acl: 'public-read', bucket: bucket_name, key: filename, body: IO.read(filename))
       puts "Successfully uploaded #{filename}"
     end

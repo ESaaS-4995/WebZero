@@ -18,7 +18,7 @@ module ApplicationHelper
     resume_relative_path = 'js'
     dest_path = 'app/helpers/functions/web_resume/output_local'
     result = Functions::WebResume::BundleHelper::bundle_to_local(template_path, resume_str, resume_relative_path, dest_path)
-    ret = Functions::WebResume::Deploy2S3::upload_to_s3
+    ret = Functions::WebResume::DeployHelper::upload_to_s3('', '', '', '', '')
     
     # attributes =  { :user => {:website => result}}
     # # attr[:user][:website]=result
