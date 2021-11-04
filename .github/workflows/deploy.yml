@@ -23,6 +23,6 @@ jobs:
           heroku_email: ${{secrets.EMAIL}}
           justlogin: true
       - run: |
-          heroku container:push web
-          heroku container:release web
+          heroku container:push web -a webzero
+          heroku container:release web -a webzero
           heroku run rake db:migrate
