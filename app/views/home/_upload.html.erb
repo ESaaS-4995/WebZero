@@ -17,13 +17,6 @@
 </div>
 <% if current_user.resume.file !=nil %>
 
- <%= form_with @user do |f| %>
-   
- <% end %> 
-
- <script type="text/javascript">
-  document.getElementById('jsform').submit();
-</script>
   <h3>WebZero is Generating Your Website........</h3>
 <% g_res = generate(path="public#{current_user.resume}") %>
 <% if g_res %>
