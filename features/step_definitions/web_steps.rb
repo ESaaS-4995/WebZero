@@ -242,6 +242,6 @@ end
 Given /^some file is selected$/ do 
   @current_user = @user
   @params = ActionController::Parameters.new(user: {resume: "test resume"})
+  #puts @params
   @current_user.resume = 'test resume file'
 end
-
