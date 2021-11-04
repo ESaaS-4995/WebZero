@@ -147,25 +147,25 @@ module Functions::WebResume::DeployHelper
 
     bucket_name = BUCKET_NAME if bucket_name == ''
 
-    bucket_create = self.bucket_created?(s3_client, bucket_name)
-    puts "bucket created: #{bucket_create}"
-    bucket_add_policy = self.bucket_policy_added?(s3_client, bucket_name)
-    puts "bucket policy added: #{bucket_add_policy}"
-    bucket_list = list_buckets(s3_client)
-    puts bucket_list
+    # bucket_create = self.bucket_created?(s3_client, bucket_name)
+    # puts "bucket created: #{bucket_create}"
+    # bucket_add_policy = self.bucket_policy_added?(s3_client, bucket_name)
+    # puts "bucket policy added: #{bucket_add_policy}"
+    # bucket_list = list_buckets(s3_client)
+    # puts bucket_list
 
-    Dir.glob('app/helpers/functions/web_resume/output_local/**/*').each do |filename|
-      next if File.directory?(filename)
+    # Dir.glob('app/helpers/functions/web_resume/output_local/**/*').each do |filename|
+    #   next if File.directory?(filename)
 
-      puts filename
-      # set acl to 'public-read'
-      puts AWS_ACCESS_KEY_ID
-      s3_client.put_object(acl: 'public-read', bucket: bucket_name, key: filename, body: IO.read(filename))
-      puts "Successfully uploaded #{filename}"
-    end
+    #   puts filename
+    #   # set acl to 'public-read'
+    #   puts AWS_ACCESS_KEY_ID
+    #   s3_client.put_object(acl: 'public-read', bucket: bucket_name, key: filename, body: IO.read(filename))
+    #   puts "Successfully uploaded #{filename}"
+    # end
 
-    puts "https://#{bucket_name}.s3.amazonaws.com/output_local/index.html"
-    # https://webzero-test.s3.amazonaws.com/output_local/index.html
+    # puts "https://#{bucket_name}.s3.amazonaws.com/output_local/index.html"
+    # # https://webzero-test.s3.amazonaws.com/output_local/index.html
     return "https://#{bucket_name}.s3.amazonaws.com/output_local/index.html"
   end
 end
