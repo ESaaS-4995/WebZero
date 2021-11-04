@@ -4,21 +4,24 @@ require_relative "functions/web_resume/deploy_helper.rb"
 
 
 module ApplicationHelper
-  def generate(path)
+  def generate(path, unique_id)
     # path = "./OmkarResume.pdf"
     # if current_user
     #   puts "#{current_user.resume}"
     # end
     puts path
+    puts unique_id
+    unique_id = unique_id[0..unique_id.index('@')-1]
+    puts unique_id
     if path == nil
       return
     end
     resume_str = Functions::WebResume::ResumeHelper::get_resume_js(path)
     template_path = 'app/helpers/functions/web_resume/template_0'
     resume_relative_path = 'js'
-    dest_path = 'app/helpers/functions/web_resume/output_local'
-    result = Functions::WebResume::BundleHelper::bundle_to_local(template_path, resume_str, resume_relative_path, dest_path)
-    ret = Functions::WebResume::DeployHelper::upload_to_s3('', '', '', '', '')
+    dest_path = 'app/helpers/functions/web_resume/output_local_' + unique_id
+    local_path = Functions::WebResume::BundleHelper::bundle_to_local(template_path, resume_str, resume_relative_path, dest_path)
+    ret = Functions::WebResume::DeployHelper::upload_to_s3(local_path, '', unique_id)
     
     # attributes =  { :user => {:website => result}}
     # # attr[:user][:website]=result

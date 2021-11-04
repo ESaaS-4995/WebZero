@@ -18,7 +18,7 @@ class WebsitesController < ApplicationController
   # GET /websites/1/edit
   def edit
   end
-
+=begin
   # POST /websites or /websites.json
   def create
     @website = Website.new(website_params)
@@ -66,4 +66,5 @@ class WebsitesController < ApplicationController
     def website_params
       params.require(:website).permit(:website_address, :username)
     end
+=end
 end

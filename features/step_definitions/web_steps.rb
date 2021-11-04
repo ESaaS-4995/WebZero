@@ -245,3 +245,10 @@ Given /^some file is selected$/ do
   #puts @params
   @current_user.resume = 'test resume file'
 end
+
+
+Given /^(?:|I )attached a valid resume file$/ do
+  attach_file("user[resume]", File.expand_path('./test-resume.pdf'))
+  #page.attach_file("user[resume]", './test-resume.pdf')
+end
+

@@ -1300,7 +1300,25 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
+    excon (0.88.0)
     ffi (1.15.4)
+    fog-aws (3.12.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (2.2.4)
+      builder
+      excon (~> 0.71)
+      formatador (~> 0.2)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.4)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (0.3.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -1311,6 +1329,7 @@ GEM
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
+    ipaddress (0.8.3)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
@@ -1332,6 +1351,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.14.4)
     msgpack (1.4.2)
+    multi_json (1.15.0)
     multi_test (0.1.2)
     netrc (0.11.0)
     nio4r (2.5.8)
@@ -1494,6 +1514,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   devise
+  fog-aws (>= 3.12)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.2.3)

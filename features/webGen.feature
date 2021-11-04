@@ -20,5 +20,7 @@ Scenario: see previous website
     And I should see "Username"
 
 Scenario: upload a file
-    Given some file is selected
-    Then I should see "generate your website"
+    Given I attached a valid resume file
+    And I press "Upload Resume"
+
+    Then I should see "Generating Your Website......"
