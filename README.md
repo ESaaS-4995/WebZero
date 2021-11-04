@@ -47,7 +47,7 @@ On Ubuntu 20.04, for example,
 (3) Run ./run_essas_ruby.sh
 
     $ cd WebZero
-    $ ./run_essas_ruby.sh
+    $ ./run_essas_ruby_development.sh
 
 ## Reference
 The template-0 of personal website is from https://github.com/JunqiZhang0/template
