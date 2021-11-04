@@ -27,4 +27,5 @@ jobs:
           heroku config:set AWS_SECRET_ACCESS_KEY=${{secrets.AWS_SECRET_ACCESS_KEY}}
           heroku config:set REGION_ID=${{secrets.REGION_ID}}
           heroku config:set BUCKET_NAME=${{secrets.BUCKET_NAME}}
+          heroku config:set RAILS_MASTER_KEY=${{secrets.RAILS_MASTER_KEY}}
           heroku run rake db:migrate
