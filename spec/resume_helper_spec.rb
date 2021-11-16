@@ -7,11 +7,15 @@ describe ApplicationHelper, type: :helper do
   end
   describe "#generate" do
     it "should return nothing if path is nil" do 
-      helper.generate(nil, 'test@test.com').should be_nil
+      expect(helper.generate(nil, 'test@test.com')).to be_nil
     end 
-    it "returns website" do
-      helper.generate('./test-resume.pdf', 'test@test.com')
-      #.should be_true
+
+    it "should return error if bucket name already exists " do 
+      expect {helper.generate('./test-resume.pdf', 'test@test.com')}.to raise_error 
+    end 
+
+    it "returns website link" do
+      #expect(helper.generate('./test-resume.pdf', 'test1003@test.com')).to include "http://webzero"
     end
   end
 end

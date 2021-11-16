@@ -8,6 +8,14 @@ describe UsersController, type: :controller do
     controller.stub(:user_params).and_return(params)
   end
   it 'should be able to update a user' do
-    controller.update
+    params = {
+      user: { 
+         resume: "test.pdf", 
+         website: "test.com" 
+      },
+      format: :html
+    }
+    #patch :update, params: params
+    expect{controller.update}.to raise_error
   end 
 end 
