@@ -20,12 +20,15 @@ function radpt_each(obj, func) {
 
 var radpt = {
     name: function(resume) {
+        if (resume["names"].length == 0) return "Not found in resume";
         return resume["names"][0];
     },
     email: function(resume) {
+        if (resume["emails"].length == 0) return "Not found in resume";
         return resume["emails"][0]["value"];
     },
     phone: function(resume) {
+        if (resume["phones"].length == 0) return "Not found in resume";
         return resume["phones"][0]["value"];
     },
     for_each_school: function(resume, func) {
