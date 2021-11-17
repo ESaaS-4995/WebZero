@@ -68,3 +68,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # deploy to aws
 gem 'aws-sdk', '~> 3'
 gem 'fog-aws', '>= 3.12'
+
+gem 'execjs', '~> 2.8.1'
