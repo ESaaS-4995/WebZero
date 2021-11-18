@@ -3,6 +3,13 @@ SimpleCov.start 'rails'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
+
+ENV['AWS_ACCESS_KEY_ID'] = '@JH@Q3DOFR4FVO1XYP3I'
+ENV['AWS_SECRET_ACCESS_KEY'] = 'LNfF@wdLtO/ljrQTwPY5I4.kGqjpFabWkcP8Gke@'
+ENV['REGION_ID'] = 'us-east-1'
+ENV['BUCKET_NAME'] = 'test1'
+
+
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -68,4 +75,5 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, :type => :helper
 end
