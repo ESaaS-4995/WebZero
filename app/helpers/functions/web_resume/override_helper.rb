@@ -1,6 +1,6 @@
 
 # Example:
-  # hmap = get_template_fields("./template_0/js/resume.js", "./template_0")
+  # hmap = get_template_fields("resume_js_str", "./template_0")
   # hmap["website-title"] = "changed"
   # get_override_info_from_hashmap(hmap)
 
@@ -9,8 +9,8 @@ require 'json'
 
 module Functions::WebResume::OverrideHelper
   # Call this function to get template elements
-  def self.get_template_fields(resume_js_path, template_root_path)
-    src = File.read(resume_js_path)
+  def self.get_template_fields(resume_js_str, template_root_path)
+    src = resume_js_str
     src = src + File.read(template_root_path + "/js/resume_adapter_common.js")
     src = src + File.read(template_root_path + "/js/resume_adapter.js")
     context = ExecJS.compile(src)
