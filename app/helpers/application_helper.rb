@@ -24,6 +24,10 @@ module ApplicationHelper
       dest_path = 'app/helpers/functions/web_resume/output_local_' + unique_id
       local_path = Functions::WebResume::BundleHelper::bundle_to_local(template_path, resume_str, resume_relative_path, dest_path)
       ret = Functions::WebResume::DeployHelper::upload_to_s3(local_path, '', unique_id)
+      
+      template_fields_hashmap = Functions::WebResume::OverrideHelper.get_template_fields(resume_str, template_path)
+      override_info = Functions::WebResume::OverrideHelper.get_override_info_from_hashmap(template_fields_hashmap)
+      
       current_user.website = ret 
       current_user.save
     end
