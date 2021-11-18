@@ -15,7 +15,7 @@ describe ApplicationHelper, type: :helper do
     end 
 
     it "returns website link" do
-      #expect(helper.generate('./test-resume.pdf', 'test1003@test.com')).to include "http://webzero"
+      expect(helper.generate('./test-resume.pdf', 'test1003@test.com')).to include "http://webzero"
     end
   end
 end
