@@ -130,7 +130,7 @@ module Functions::WebResume::DeployHelper
 
   # For default demo: call upload_to_s3(local_path, '', unique_id)
   def self.upload_to_s3(local_path, region_id, bucket_name)
-    bucket_name = "webzero-" + bucket_name
+    bucket_name = "webzero-it2-" + bucket_name
     bucket_name = bucket_name.sub('_', '-')
     # TODO: ensure the bucket name is valid
     region_id = REGION_ID
