@@ -17,6 +17,10 @@ class WebsitesController < ApplicationController
 
   # GET /websites/1/edit
   def edit
+    @website = Website.find(params[:id])
+    @website_fields= get_template_fields("/helpers/functions/web_resume/output_local_#{@user}/js/resume.js",
+                                          "helpers/functions/web_resume/output_local_#{@user}")
+
   end
 =begin
   # POST /websites or /websites.json

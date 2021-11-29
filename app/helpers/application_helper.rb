@@ -1,6 +1,7 @@
 require_relative "functions/web_resume/bundle_helper.rb"
 require_relative "functions/web_resume/resume_helper.rb"
 require_relative "functions/web_resume/deploy_helper.rb"
+require_relative "functions/web_resume/override_helper.rb"
 
 
 module ApplicationHelper
@@ -31,6 +32,11 @@ module ApplicationHelper
     puts current_user.website
     return current_user.website
 
-    end
+  end
+
+  def load_resume_fields(resume_js_path, template_root_path)
+    hmap = get_template_fields(resume_js_path, template_root_path)
+    return hmap
+  end
   end
 # end

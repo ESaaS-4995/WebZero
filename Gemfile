@@ -48,6 +48,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Restart Rack automatically
+  gem 'rerun'
 end
 
 group :test do
@@ -70,3 +72,6 @@ gem 'aws-sdk', '~> 3'
 gem 'fog-aws', '>= 3.12'
 
 gem 'execjs', '~> 2.8.1'
+
+# form styling
+gem 'bootstrap_form', '~> 5.0'

@@ -19,12 +19,21 @@
 
 
   <% if current_user.resume.file !=nil %>
-    <h3>WebZero is Generating Your Website........</h3>
+    <div class="loading">
+      <h3>WebZero is Generating Your Website........</h3>
+      <%= image_tag "loading.gif", :class => "loading_gif"%>
+    </div>
     <% g_res = generate(path="public#{current_user.resume}",unique_id="#{current_user.email}") %>
     <% if g_res %>
-      <h1>Website genereated successfully! This is your website location: </h1>
+      <h1>Website generated successfully! This is your website location: </h1>
       <br/>
       <%= link_to g_res, g_res %>
+      <br/>
+      <br/>
+      <%= link_to "Edit Fields", edit_website_path, class:"btn btn-light" %>
+    <% else %>
+      <h1>Website generation error.</h1>
+      <br/>
     <% end %>
   <% end %>
 </div>

@@ -1,4 +1,4 @@
-<%= form_with(model: website) do |form| %>
+<%= bootstrap_form_with(model: website) do |form| %>
   <% if website.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(website.errors.count, "error") %> prohibited this website from being saved:</h2>
@@ -9,6 +9,11 @@
         <% end %>
       </ul>
     </div>
+  <% end %>
+
+<!--  TODO: loop through fields and add form-->
+  <% @website_fields.each do |field| %>
+    <% form.text_field field %>
   <% end %>
 
   <div class="field">
